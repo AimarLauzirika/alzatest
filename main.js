@@ -1,14 +1,19 @@
 let test_status = {
+  questions_json: {},
+  num_questions: 0,
   current_question: 0,
   can_answer: true,
 }
+let questions_json;
 
 // Get DOM Elements
 const btn_next_question = document.querySelector(".bottom_buttons").lastElementChild
-// console.log(btn_next_question);
 btn_next_question.addEventListener('click', ()=>{change_next_question()})
+const btn_previous_button = document.querySelector(".bottom_buttons").firstElementChild
+btn_previous_button.addEventListener('click', ()=>{change_previous_question()})
 
 async function init () {
+  test_status.questions_json = await get_questions();
   print_question()
 }
 
@@ -27,12 +32,13 @@ async function get_questions() {
   // console.log(response);
   const questions_json = await response.json()
   // console.log(questions_json);
+  test_status.num_questions = questions_json.questions.length
   return questions_json
 }
 
 async function get_actual_question() {
-  const questions_json = await get_questions()
-  const actual_question = questions_json.questions[test_status.current_question]
+  // const questions_json = await get_questions()
+  const actual_question = test_status.questions_json.questions[test_status.current_question]
   // console.log(actual_question);
   return actual_question
 }
@@ -77,6 +83,26 @@ async function print_question() {
     })
     e_options.appendChild(e_option)
   });
+
+  enable_btn_next_question()
+  enable_btn_previous_question()
+
+}
+
+function enable_btn_next_question() {
+  if (test_status.current_question < test_status.num_questions -1) {
+    btn_next_question.disabled = false
+  } else {
+    btn_next_question.disabled = true
+  }
+}
+
+function enable_btn_previous_question() {
+  if (test_status.current_question > 0) {
+    btn_previous_button.disabled = false
+  } else {
+    btn_previous_button.disabled = true
+  }
 }
 
 function correct_answer(selected_option, correct_option){
@@ -106,10 +132,29 @@ function correct_answer(selected_option, correct_option){
 
 function change_next_question() {
   // Update test_status.current_question
-  test_status.current_question ++
+  increase_current_question()
 
   clean_question()
   print_question()
+}
+
+function change_previous_question() {
+  decrease_current_question()
+
+  clean_question()
+  print_question()
+}
+
+function increase_current_question() {
+  if (test_status.current_question < test_status.num_questions -1) {
+    console.log("elooo");
+    test_status.current_question ++
+  }
+}
+function decrease_current_question() {
+  if (test_status.current_question > 0) {
+    test_status.current_question --
+  }
 }
 
 function clean_question() {
@@ -122,7 +167,7 @@ function clean_question() {
 
   // * Remove <options>
   const e_options = document.querySelector('.options')
-  console.log(e_options);
+  // console.log(e_options);
   e_options.innerHTML = ""
 
 }
