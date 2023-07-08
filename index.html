@@ -12,13 +12,13 @@
       margin-right: auto;
     }
     .option {
-      cursor: pointer;
       border: 2px rgb(207, 207, 207) solid;
       border-radius: 6px;
       padding: 6px 9px;
     }
-    .option:hover{
+    .option.can_answer:hover{
       /* background-color: rgb(230, 230, 230); */
+      cursor: pointer;
       border-color: rgb(65, 121, 226);
     }
     .correct_answer{
@@ -34,7 +34,9 @@
     <div class="question-box">
       <p class="question"></p>
     </div>
-    <div class="options">
+    <div class="options"></div>
+    <div class="bottom_buttons">
+      <button>Siguiente</button>
     </div>
   </div>
 </body>

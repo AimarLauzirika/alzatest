@@ -1,3 +1,13 @@
+let test_status = {
+  current_question: 0,
+  can_answer: true,
+}
+
+// Get DOM Elements
+const btn_next_question = document.querySelector(".bottom_buttons").lastElementChild
+// console.log(btn_next_question);
+btn_next_question.addEventListener('click', ()=>{change_next_question()})
+
 async function init () {
   print_question()
 }
@@ -20,9 +30,9 @@ async function get_questions() {
   return questions_json
 }
 
-async function get_actual_question(index = 0) {
+async function get_actual_question() {
   const questions_json = await get_questions()
-  const actual_question = questions_json.questions[index]
+  const actual_question = questions_json.questions[test_status.current_question]
   // console.log(actual_question);
   return actual_question
 }
@@ -60,7 +70,7 @@ async function print_question() {
     // console.log(option);
     const e_option = document.createElement('p')
     e_option.textContent = (option)
-    e_option.classList.add('option')
+    e_option.classList.add('option', 'can_answer')
     e_option.dataset.option = index
     e_option.addEventListener('click', () => {
       correct_answer(index, actual_question.correct_option)
@@ -71,14 +81,48 @@ async function print_question() {
 
 function correct_answer(selected_option, correct_option){
   // console.log(correct_option);
-  const e_options = document.querySelector('.test-box>.options')
+  if (!test_status.can_answer) {
+    return
+  }
+  test_status.can_answer = false
+  const e_options = document.querySelectorAll('.options > .option')
+  e_options.forEach(option => {
+    option.classList.remove('can_answer')
+  });
+
+  
+  
   if (selected_option === correct_option) {
-    e_options.children[selected_option].classList.add('correct_answer');
+    e_options[selected_option].classList.add('correct_answer');
     return
   }
   if (selected_option !== correct_option) {
-    e_options.children[selected_option].classList.add('wrong_answer');
-    e_options.children[correct_option].classList.add('correct_answer');
+    e_options[selected_option].classList.add('wrong_answer');
+    e_options[correct_option].classList.add('correct_answer');
     return
   }
+  
+}
+
+function change_next_question() {
+  // Update test_status.current_question
+  test_status.current_question ++
+
+  clean_question()
+  print_question()
+}
+
+function clean_question() {
+
+  // * Remove <code>
+  const e_question_box = document.querySelector('.question-box')
+  if (e_question_box.lastElementChild.tagName === "PRE") {
+    e_question_box.removeChild(e_question_box.lastElementChild)
+  }
+
+  // * Remove <options>
+  const e_options = document.querySelector('.options')
+  console.log(e_options);
+  e_options.innerHTML = ""
+
 }

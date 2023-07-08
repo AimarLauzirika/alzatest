@@ -10,6 +10,38 @@
         "12"
       ],
       "correct_option": 2
+    },
+    {
+      "question": "¿Qué realiza la siguiente función?",
+      "code": "setInterval(calcular_datos,1000);",
+      "options": [
+        "Ejecutar la función calcular_datos cada segundo",
+        "Ejecutar la función calcular_datos una vez pero pasado un segundo",
+        "Ejecutar la función calcular_datos cada 1000 segundos",
+        "Pasa el dato 1000 a la función calcular_datos"
+      ],
+      "correct_option": 0
+    },
+    {
+      "question": "¿Que devolvería la función si la invoco como calculo (undefined)?",
+      "code": "function calculo(x) { return (x); }",
+      "options": [
+        "\"undefined\"",
+        "true",
+        "false",
+        "undefined"
+      ],
+      "correct_option": 0
+    },
+    {
+      "question": "¿Cómo cargaríamos una librería Javascript dentro de una página web?",
+      "options": [
+        "<link href=\"/js/milibreria.js\" rel=\"script\" type=\"text/javascript\"/>",
+        "<a href=\"/js/milibreria.js\">Libreria</a>",
+        "fal<script type=\"text/javascript\" src=\"/js/milibreria.js\"></script>se",
+        "Ninguna de las anteriores respuestas es válida"
+      ],
+      "correct_option": 0
     }
   ]
 }
