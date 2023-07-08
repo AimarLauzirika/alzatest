@@ -1,0 +1,15 @@
+{
+  "questions": [
+    {
+      "question": "¿Que devolvería la siguiente función si la invoco como calculo(12)?",
+      "code": "function calculo(x) { return (!x); }",
+      "options": [
+        "479001600",
+        "true",
+        "false",
+        "12"
+      ],
+      "correct option index": 2
+    }
+  ]
+}
