@@ -54,13 +54,31 @@ async function print_question() {
   // console.log(options);
   
   const e_options = document.querySelector('.test-box>.options')
-  console.log(e_options);
+  // console.log(e_options);
 
-  options.forEach(option => {
+  options.forEach((option, index) => {
     // console.log(option);
     const e_option = document.createElement('p')
-    e_option.textContent = option
+    e_option.textContent = (option)
     e_option.classList.add('option')
+    e_option.dataset.option = index
+    e_option.addEventListener('click', () => {
+      correct_answer(index, actual_question.correct_option)
+    })
     e_options.appendChild(e_option)
   });
+}
+
+function correct_answer(selected_option, correct_option){
+  // console.log(correct_option);
+  const e_options = document.querySelector('.test-box>.options')
+  if (selected_option === correct_option) {
+    e_options.children[selected_option].classList.add('correct_answer');
+    return
+  }
+  if (selected_option !== correct_option) {
+    e_options.children[selected_option].classList.add('wrong_answer');
+    e_options.children[correct_option].classList.add('correct_answer');
+    return
+  }
 }
