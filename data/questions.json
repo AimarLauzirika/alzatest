@@ -31,17 +31,39 @@
         "false",
         "undefined"
       ],
-      "correct_option": 0
+      "correct_option": 3
     },
     {
       "question": "¿Cómo cargaríamos una librería Javascript dentro de una página web?",
       "options": [
         "<link href=\"/js/milibreria.js\" rel=\"script\" type=\"text/javascript\"/>",
         "<a href=\"/js/milibreria.js\">Libreria</a>",
-        "fal<script type=\"text/javascript\" src=\"/js/milibreria.js\"></script>se",
+        "<script type=\"text/javascript\" src=\"/js/milibreria.js\"></script>",
         "Ninguna de las anteriores respuestas es válida"
       ],
-      "correct_option": 0
+      "correct_option": 2
+    },
+    {
+      "question": "¿Qué devolvería la sentencia typeof libro.informacion()?",
+      "code": "var libro = {\n\ttitulo:'Las Legiones Malditas',\n\tautor:'Santiago Posterguillo',\n\tinformacion:function (){ return this.titulo + \" escrito por \" + this.autor; }\n}",
+      "options": [
+        "\"undefined\"",
+        "\"function\"",
+        "\"object\"",
+        "\"string\""
+      ],
+      "correct_option": 3
+    },
+    {
+      "question": "¿Que devolvería la función si la invoco como calculo (undefined)?",
+      "code": "function calculo(x) { return (!x); }",
+      "options": [
+        "\"undefined\"",
+        "true",
+        "false",
+        "undefined"
+      ],
+      "correct_option": 1
     }
   ]
 }

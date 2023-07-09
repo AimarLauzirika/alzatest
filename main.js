@@ -86,6 +86,7 @@ async function print_question() {
 
   enable_btn_next_question()
   enable_btn_previous_question()
+  enable_can_answer()
 
 }
 
@@ -103,6 +104,9 @@ function enable_btn_previous_question() {
   } else {
     btn_previous_button.disabled = true
   }
+}
+function enable_can_answer() {
+  test_status.can_answer = true;
 }
 
 function correct_answer(selected_option, correct_option){
@@ -147,7 +151,6 @@ function change_previous_question() {
 
 function increase_current_question() {
   if (test_status.current_question < test_status.num_questions -1) {
-    console.log("elooo");
     test_status.current_question ++
   }
 }
