@@ -1,9 +1,8 @@
 all: clean dockerize push integration-test
 
 clean:
-	# docker stop $(docker ps -a -q)
+	docker stop $$(docker ps -a -q)
 	docker rm $$(docker ps -a -q)
-	# docker container prune -f
 	docker rmi aimarlauzirika/alzatest -f
 
 dockerize:
@@ -14,4 +13,7 @@ push:
 
 integration-test:
 	docker run -d -p 80:80 --name integration-test aimarlauzirika/alzatest:latest
+
+launch:
 	open http://localhost
+
