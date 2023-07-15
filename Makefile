@@ -3,11 +3,11 @@ APP_CONTAINER_NAME = app-alzatest
 all: clean dockerize push integration-test
 
 clean:
-	@if [ $$(docker ps -a -q | wc -l) != 0 ];\
+	@if [ $$(docker ps -a | grep $(APP_CONTAINER_NAME) | awk -F ' ' '{print $$1}') != 0 ];\
 	then\
 		echo "hay contenedores";\
-		docker stop $$(docker ps -a -q);\
-		docker rm $$(docker ps -a -q);\
+		docker stop $(APP_CONTAINER_NAME);\
+		docker rm $(APP_CONTAINER_NAME);\
 	else\
 		echo "no hay contenedores";\
 	fi
@@ -21,7 +21,10 @@ push:
 
 integration-test:
 	docker run -d -p 80:80 --name $(APP_CONTAINER_NAME) aimarlauzirika/alzatest:latest
+	docker stop $(APP_CONTAINER_NAME)
+	docker rm $(APP_CONTAINER_NAME)
 
 launch:
+	docker run -d -p 80:80 --name $(APP_CONTAINER_NAME) aimarlauzirika/alzatest:latest
 	open http://localhost
 
