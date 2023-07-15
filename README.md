@@ -8,6 +8,7 @@
 
 ## Lo siguiente 
 
+- k8s
 - Jenkis
 - Terraform
 - Subir a GCP
