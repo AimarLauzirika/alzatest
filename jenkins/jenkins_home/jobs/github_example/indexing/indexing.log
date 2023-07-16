@@ -1,0 +1,29 @@
+Started by user [8mha:////4P33ON3kQ4zpxx3AdeTd/9r/g7s1IkcSDT6+NdlWdjT+AAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+[Sun Jul 16 11:54:05 UTC 2023] Starting branch indexing...
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git ls-remote --symref -- git@github.com:AimarLauzirika/jenkins-project.git # timeout=10
+ > git rev-parse --resolve-git-dir /var/jenkins_home/caches/git-06f974ef86c85421c4bcb17c889d9aa1/.git # timeout=10
+Setting origin to git@github.com:AimarLauzirika/jenkins-project.git
+ > git config remote.origin.url git@github.com:AimarLauzirika/jenkins-project.git # timeout=10
+Fetching & pruning origin...
+Listing remote references...
+ > git config --get remote.origin.url # timeout=10
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git ls-remote -h -- git@github.com:AimarLauzirika/jenkins-project.git # timeout=10
+Fetching upstream changes from origin
+ > git config --get remote.origin.url # timeout=10
+ > git fetch --tags --force --progress --prune -- origin +refs/heads/*:refs/remotes/origin/* # timeout=10
+Checking branches...
+  Checking branch main
+      ‘Jenkinsfile’ found
+    Met criteria
+No changes detected: main (still at b621ab2f1a4a40a560c6f20df2c965023eeb2468)
+  Checking branch test
+      ‘Jenkinsfile’ found
+    Met criteria
+Scheduled build for branch: test
+Processed 2 branches
+[Sun Jul 16 11:54:11 UTC 2023] Finished branch indexing. Indexing took 5.2 sec
+Finished: SUCCESS
