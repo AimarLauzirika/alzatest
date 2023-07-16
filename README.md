@@ -5,10 +5,10 @@
 - App de preguntas en Javascript sin terminar.
 - Docker: crear imagen y subir a Docker Hub.
 - Pipeline Make
+- k8s
 
 ## Lo siguiente 
 
-- k8s
 - Jenkis
 - Terraform
 - Subir a GCP
